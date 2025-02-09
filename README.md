@@ -1,2 +1,2 @@
 # Learning-Js
-A code repo for JavaScript series 
+A code repo for the JavaScript series 

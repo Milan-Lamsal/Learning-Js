@@ -39,15 +39,15 @@ const myArry =[8,1,2,3,4,5]; // number arry
 
 // slice, splice - often heard 
 
-//slice 
-console.log ("A",myArry);
+//slice -> does not change the new array 
+console.log ("A",myArry);// 
 const myn1= myArry.slice(1,3)// index( 1 to 3 ) where 3 is not included 
-console.log(myn1);
+console.log(myn1); 
 
-//splice 
+//splice -> remove ,replaces or adds elements 
 console.log ("B",myArry);
 const myn2= myArry.splice(1,3)// yes changes the original array 
-console.log(myn2);
+console.log(myn2);// changes the original array 
 console.log("C",myArry);
 
 

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parents Child Siblings Nodes , HTMLCollection,</title>
+</head>
+<body style="background-color: #212121;  color: #fff;">
+    <div class="parents">
+        <div class="day">Sunday </div>
+        <div class="day">Monday</div>
+        <div class="day">Tuesday</div>
+        <div class="day">Wednesday</div>
+        
+    </div>
+    
+    <script>
+        let Parents =document.querySelector('.parents');
+        console.log(Parents);
+
+        console.log(Parents.children); 
+        // it gives HTMLCollection which is almost array like property 
+        
+        console.log(Parents.children[1].innerHTML); //Monday
+
+        // As the array loop doesnt work in HTMLcollection but we can use for loop
+
+        for (let i = 0; i < Parents.children.length; i++) {
+            // console.log(Parents.children[i].innerHTML);
+        }
+        // Parents.children[0].style.color="Yellow";
+        // Parents.children[1].style.color="Green";
+
+        // firstElementChild -> for targeting the first element or last element
+
+        console.log(Parents.firstElementChild);
+       // <div class="day" style="color: yellow;">Sunday </div>
+
+       console.log(Parents.lastElementChild);
+      //<div class="day">Wednesday</div>
+
+    //   Child to Parents 
+    const dayOne= document.querySelector('.day'); // gives Sunday 
+    // console.log(dayOne);
+    // console.log(dayOne.parentElement); // // It gives the parents elements 
+    // console.log(dayOne.nextElementSibling); // it gives the next sibling which is Monday in this scenario 
+
+
+//    Interesting one  (ChildNodes)
+console.log("Node:", Parents.childNodes) // it gives alll the nodes of, also even whiteSpace is count as node , comment ,but if give space later in the top part then it won't render however if you comment on the top even though the code is present below the comment and the space is count in the node
+    
+    </script>
+</body>
+</html>

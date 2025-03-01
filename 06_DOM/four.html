@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit and Remove Elements in DOM</title>
+</head>
+<body style="background-color: #212121; color: white;">
+    <ul class="language">
+        <li>JavaScript</li>
+    </ul>
+    
+    <script>
+ //+++++++++ Adding and displaying the list item by using function ++++++++++++
+        function addLanguage (langName){
+            const li = document.createElement('li');
+            li.innerHTML = `${langName}`
+            // for attach
+            document.querySelector('.language').appendChild(li);
+
+        }
+        addLanguage("python")
+        addLanguage("C++")
+        addLanguage("TypeScript")
+        
+        //This way is not a good approach cus everytime you add something it travels from the parents to way upto end in other word, tree traversal
+
+        // Tree traversal in JavaScript refers to the process of visiting all the nodes of a tree data structure in a specific order.
+
+
+
+        // So for the optimization for, Large Scale Project 
+        function addOptiLangugage(langName){
+            const li =document.createElement('li')
+            // li.appendChild(document.createTextNode (langName));
+            const addText = document.createTextNode (langName)
+            li.appendChild(addText);
+            document.querySelector('.language').appendChild(li)
+        }
+        addOptiLangugage("Java");
+// one quick, - you might notice that li has been declared in above but we are still able to use it because of the scope as in the function ends the scope does not pass below it.
+
+// don't always use innerHTML try to make habit to use appendChild in the working large scale project or company 
+
+// +++++++++++++++++++++++++++++++++ Edit ++++++++++++++++++++++++++++++++++++
+const secondLang= document.querySelector("li:nth-child(2)"); 
+//It selects the second <li> element inside its parent.
+// secondLang.innerHTML ="Kotlin"; this is not the optimal way to do as it traversal 
+
+const newLi= document.createElement('li');
+newLi.textContent = "Mojo" // its like innerHTML but its in memory havne't displayed yet
+secondLang.replaceWith(newLi) //it replace python my mojo 
+// JavaScript
+//Mojo
+//C++
+//TypeScript
+//Java
+
+// +++++++++++++++ another way to edit ++++++++++++++++++++++++++++++++
+
+const firstLang = document.querySelector("li:first-child")
+firstLang.outerHTML = '<li>TypeScript</li>'
+//first child is added as typescript 
+
+// +++++++++++++++++++ Remove +++++++++++++++++++++++++++++++++
+
+const lastLang=document.querySelector("li:last-child");
+lastLang.remove() // java is removed 
+
+
+
+    </script>
+</body>
+</html>

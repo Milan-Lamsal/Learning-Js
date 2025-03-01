@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM learning </title>
+    <style>
+        .bg-color{
+            background-color: #212121;
+            color:white;
+        }
+    </style>
+</head>
+<body class="bg-color">
+
+    
+    <div class="bg-balck">
+        <h1 id="title" class="heading">DOM learning  <span style="display: none;">Hide the text </span></h1>
+        <h2>Lorem, ipsum dolor.</h2>
+        <h2>Lorem ipsum dolor sit amet.</h3>
+        <h2>Lorem ipsum dolor sit amet consectetur.</h4>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias vero odio aliquid blanditiis ad! Obcaecati, id! At nulla, assumenda autem repellat reiciendis nostrum alias commodi cumque illum sed voluptatem aut.</p>
+
+        <input type="password" name="" id="">
+
+        <!-- ul>li*3 --> shortForm
+
+        
+        <ul>
+            <li class="list-item">one</li>
+            <li class="list-item">Two</li>
+            <li class="list-item">Three</li>
+            <li class="list-item">four</li>
+        </ul>
+    </div>
+</body>
+</html>
+<!-- console.log(window)
+ console.log(document)
+ console.dir(document)
+ console.log(window.document) -->
+
+ <!--  ++++++++++++++++ getElementById ++++++++++++++++++++++++++++++++++++++++++++++++
+
+document.getElementById('title');
+<h1 id=​"title" class=​"heading">​ DOM learning ​</h1>​
+
+let title =document.getElementById('title')
+console.log(title)
+<h1 id=​"title" class=​"heading">​ DOM learning ​</h1>​
+
+
+document.getElementById('title').id
+'title'
+
+document.getElementById('title').class
+undefined
+
+document.getElementById('title').className
+'heading'
+ +++++++++++++++++++++++++++++ getAttributes++++++++++++++++++++++++++++++++++  
+
+ document.getElementById('title').getAttribute('id')
+'title'
+ 
+document.getElementById('title').getAttribute('class')
+'heading'
+
+++++++++++++++++++++++++++++++++ setAttributes      +++++++++++++++++++++++++++++++++++++++++++++
+document.getElementById('title').setAttribute('class', 'test') -> where it change the class to test 
+
+++++++++++++++++++++++  STYLES ++++++++++++++++++++++++++++++++++++++++++++++++++
+title.style.backgroundColor ="green"
+'green'
+
+title.style.borderRadius ="50%"
+'50%'
+
+++++++++++++++++++++++++ taking out content out of it ++++++++++++++++++++++++++++
+
+title.textContent -> gives all the values even if you used CSS and hide it 
+' DOM learning '
+
+title.innerHTML -> it given all the value with the code itself , gives html 
+' DOM learning '
+
+title.innerText ->if you used CSS to hinde the content then it won't show up 
+'DOM learning' 
+
+for example : after the span tag 
+
+title.textContent -> shows all the hiddent content as well if used CSS to hide it 
+'DOM learning  Hide the text 
+
+title.innerHTML -> give the whole html 
+'DOM learning  <span style="display: none;">Hide the text </span>'
+
+title.innerText -> only visible content if you used CSS and hide content it won't show up 
+'DOM learning'
+
+++++++++++++++++++++++++++++++++ getElementByClassName +++++++++++++++++++++++++++++++++++++
+
+document.getElementsByClassName('heading')
+HTMLCollection [h1#title.heading, title: h1#title.heading]
+
+++++++++++++++++++++++++++++++++++++ querySelector -> individual  ++++++++++++++++++++++++++++++++
+
+document.querySelector('h2') -> only select the first one 
+<h2>Lorem, ipsum dolor.</h2> 
+
+document.querySelector('#title') -> for selecting id  
+<h1 id="title" class="heading">
+
+document.querySelector('.heading') -> for selecting class
+<h1 id=​"title" class=​"heading">​…​</h1>​
+
+document.querySelector('input[type="password"]')
+<input type=​"password" name id>​
+
+document.querySelector('p:first-child')
+null
+
+document.querySelector('ul')
+let ul= document.querySelector('ul')
+
+myUl.querySelector('li')
+<li>one</li>
+
+let Li= document.querySelector('li').style.color="green"
+
+++++++++++++++++++++++++++++++++++++++++++++ quereySelectorAll  -> all value , give [node list ]+++++++++++++++++
+
+1->The nodelist looks like an array but it is not a array and as it does not have the map where Array has the map function 
+2-> We cannot use change the color until and unless we give the array value like [0], cant do nothing in nodelist 
+3-> It also have forEach loop like an Array 
+
+document.querySelectorAll('li')
+NodeList(3) [li, li, li]
+
+
+const tempLiList =document.querySelectorAll('li')
+undefined
+
+tempLiList
+
+NodeList(3) [li, li, li]
+
+tempLiList.style.color="green"
+
+VM12918:1 Uncaught TypeError: Cannot set properties of undefined (setting 'color')
+    at <anonymous>:1:23
+(anonymous) @ VM12918:1Understand this errorAI
+
+tempLiList[0].style.color="green"
+'green'
+
++++++++++++++++++++++++++++++++++++++++++++ for Each loop ++++++++++++++++++++++++++++++++++++++++++++++++
+
+const mylist=document.querySelectorAll('li')
+undefined
+
+mylist.forEach((l)=>{
+    l.style.backgroundColor="blue"
+})
+
+++++++++++++++++++++++++++++++++++++++      getElementsByClassName          +++++++++++++++++++++++++++++++++++++++++++++
+gives HTMLCollectiom (which does not have MAP and for each function
+
+document.getElementsByClassName('list-item')
+HTMLCollection(4) [li.list-item, li.list-item, li.list-item, li.list-item]
+
++++++++++++++++++++++++++++++++++++++++++++++ To convert Node List or HTML collection into Array +++++++++++++++++++++++++++
+
+let convertingArray = document.getElementsByClassName('list-item')
+undefined
+
+convertingArray
+HTMLCollection(4) [li.list-item, li.list-item, li.list-item, li.list-item]
+
+Array.from(convertingArray)
+(4) [li.list-item, li.list-item, li.list-item, li.list-item]
+
+[[Prototype]]:Array(0)
+
+Now this HTML collection is converted into Array now you can use the MAP function to make sure you can check in the prototype 
+as well for the Map function, or for Each loop
+ -->

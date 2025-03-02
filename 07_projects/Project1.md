@@ -42,3 +42,37 @@ buttons.forEach(function (button) {
 });
 
 ```
+ ## Project 2 (BMI Calculator)
+
+ ``` Javascript
+ const form = document.querySelector('form');
+// let Height = parseInt(document.querySelector('#height').value); -> this usecase will give you empty value
+
+// form is submiited either by POST TYPE  or GET TYPE
+
+form.addEventListener('submit', function (evnt) {
+  evnt.preventDefault(); // Prevent form submission to the server:
+  let Height = parseInt(document.querySelector('#height').value); // convert into integer using parseInt
+  let Weight = parseInt(document.querySelector('#weight').value); // .value is used for form elements like <input>, <textarea>, and <select>, because these elements allow the user to input data, and .value is used to retrieve or set the content of these input fields.
+  let Result = document.querySelector('#results');
+
+  if (Height === '' || Height < 0 || isNaN(Height)) {
+    //check if a value is "Not-a-Number". It returns true if the value is not a valid number, and false if it is a valid number.
+    Result.innerHTML = `Please give a valid height ${Height}`;
+  } else if (Weight === '' || Weight < 0 || isNaN(Weight)) {
+    Result.innerHTML = `Please give a valid Weight ${Weight}`;
+  } else {
+    const BMI = (Weight / ((Height * Height) / 10000)).toFixed(2);
+    //Show the result
+    Result.innerHTML = `<span>${BMI}</span>`;
+    if (BMI <= 18.6) {
+      Result.innerHTML = `<br>${BMI} is Under Weight so gain weight `;
+    } else if (BMI >= 18.6 && BMI <= 24.9) {
+      Result.innerHTML = `<br>${BMI} is Normal Weight keep it up  `;
+    } else {
+      Result.innerHTML = `<br>${BMI} is Overweight so go to workout and lose weight `;
+    }
+  }
+});
+
+```

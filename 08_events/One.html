@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing Image 
+        <div>
+            <ul id="images">
+                <li>
+                    <img width="200px" id="photoshops" src="https://images.pexels.com/photos/27168459/pexels-photo-27168459/free-photo-of-a-clock-tower-is-in-the-foreground-of-a-blurry-photo.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt="Clock Tower">
+                </li>
+                <li>
+                    <img width="200px" id="photoshop" src="https://images.pexels.com/photos/402028/pexels-photo-402028.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Clock Tower">
+                </li>
+                <li>
+                    <img width="200px" id="US" src="https://images.pexels.com/photos/27168459/pexels-photo-27168459/free-photo-of-a-clock-tower-is-in-the-foreground-of-a-blurry-photo.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt="">
+                </li>
+                <li>
+                    <img width="200px" id="japan" src="https://images.pexels.com/photos/37646/new-york-skyline-new-york-city-city-37646.jpeg?cs=srgb&dl=pexels-pixabay-37646.jpg&fm=jpg&_gl=1*1iyhuym*_ga*Njk2MDk0Nzg4LjE3NDA5NjAzOTg.*_ga_8JE65Q40S6*MTc0MDk2MDM5OC4xLjEuMTc0MDk2MTM0NC4wLjAuMA.." alt="Clock Tower">
+                </li>
+                <li><a style="color: aliceblue;" href="https://google.com" id="google"> Google </a></li>
+            </ul>
+        </div>
+    </h2>
+
+    <script>
+        //using onclick on html is not a optimal way to do it 
+        // document.getElementById("photoshop").onclick=function(){
+        //     alert("Bridge");
+        // }
+           // Another method 
+        // attachEvent() -> very early time, during internet Explorer 
+        // JQuery -> on
+
+
+        // +++++++++++++++++++ Optimal way to do ++++++++++++++++++++++++++++++++
+    
+        // document.getElementById('photoshop').addEventListener('click', function() {
+        //     alert("BRIDGE CLICKED AGIAN");
+        // }, false) // we dont need to write false as it is default 
+        // // Event Propostion , true or false, - > Two context, 
+        // // Event bubling (False) and Event Capturing(True) , 
+        // document.getElementById('images').addEventListener('click', function(e){
+        //     console.log("clicked inside the ul");
+        // },false) // second clicked inside the ul prints eventhough the photoshop is under the image which is ul 
+        // document.getElementById('photoshops').addEventListener('click', function(e){
+        //     console.log("Photosop");
+        //     e.stopPropagation() // what it does is now when you click the the photoshp image then it won't print "clicked inside the ul "
+        // },false)  // first photoshop prints 
+        // // Bubbling(false) , small to large as id is under images so id prints first and then only images 
+        // // Capturing (true). large first and then small, so first clicked inside the ul and then only photoshop
+
+        // //  ++++++++++++++++++++++++++++++ Event Object (e) ++++++++++++++++++++++++++++++++++++++++
+        // document.getElementById('photoshop').addEventListener('click', function(e){
+        //     console.log(e);
+        
+        // },false)
+        // document.getElementById('photoshop').addEventListener('click', function(e){
+        //     console.log(e);
+        // })
+
+        // document.getElementById("google").addEventListener( ('click'), function(e){
+        //     e.preventDefault();
+        //     e.stopPropagation();
+        //     console.log("Google Clicked");
+        //     // before using stopPropagation the result was :
+        //     // Google Clicked 
+        //     //  clicked inside the ul 
+
+        //     // after using e.stopPropagation the result was:
+        //     // Google Clicked
+        // },false)
+       
+ //+++++++++++++++++++++++++++++++++  Removing  the images +++++++++++++++++++++++++++++++++++++++++++++++
+ document.querySelector('#images').addEventListener('click',function (e){
+    console.log(e.target);  // it gives the whole value - <img width="200px" id="photoshop" src="https://images.pexels.com/photos/402028/pexels-photo-402028.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Clock Tower">
+    console.log(e.target.tagName); 
+    if(e.target.tagName==='IMG'){
+        console.log(e.target.id)
+        let removeIt= e.target.parentNode
+        removeIt.remove()
+    }
+    console.log(e.target.parentNode);
+    // Strict note 
+   
+    //or 
+   // rermoveIt.parentNode.removeChild(removeIt)
+ },false);
+     
+</script>
+</body>
+</html>
+<!--                                    Notes                                                  -->
+<!--  Types of Events , timestamp, defaultPrevented, target, toElement, srcElement, currentTarget,clientX, ClientY, screenX,screenY,
+altKey, ctrlKey, shiftkey, keyCode, 
+
+
+ Environmnet -> like mouse , postion
+ Browser Event -> timeStamp
+  -->

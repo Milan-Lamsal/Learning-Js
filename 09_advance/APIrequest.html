@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX</title>
+</head>
+<body style="background-color: #212121; color: white;">
+    <button id="fetchDataButton"> Fecth Github Data</button>
+</body>
+<script >
+    const requestUrl = "https://api.github.com/users/Milan-Lamsal"
+    const xhr = new XMLHttpRequest(); //Creates a new object → Every time you use new, it makes a fresh copy.
+     xhr.open('GET',requestUrl); 
+    xhr.onreadystatechange= function(){
+         console.log(xhr.readyState); // changing the state  
+         // detecting state
+        if(xhr.readyState == 4){
+            const data =JSON.parse (this.responseText) //when yo taling about the current context then you write this keyword , converting  into JSON but typing JSON.parse where .parse conver string to JSON  
+            console.log(typeof  data); // every time the response comes from the URL, then it comes in the form or String , so we use JSON.parse to convert the string into JSON
+    
+            console.log(data.followers);
+            console.log(data.avatar_url);// Avatar Url 
+
+            //  Call a function to create the card and display it 
+            createCard(data.avatar_url, data.followers);
+        }
+    };
+    // Function to create the card with the Profile photo and followers count 
+
+    function createCard(photoUrl, followersCount) {
+        const card = document.createElement('div');
+        card.style.width ='200px';
+        card.style.height = '250px';  // Set the height of the card
+            card.style.border = '1px solid #fff';  // Border color
+            card.style.padding = '10px';  // Padding inside the card
+            card.style.margin = '10px';  // Margin outside the card
+            card.style.backgroundColor = '#333';  // Background color
+            card.style.textAlign = 'center';  // Center align text and images
+
+            // Create an image element for the photo
+            const img = document.createElement('img');
+            img.src = photoUrl;  // Set the photo URL
+            img.alt = 'Profile Picture';  // Set alternate text for the image
+            img.style.width = '100px';  // Set the width of the image
+            img.style.height = '100px';  // Set the height of the image
+            img.style.borderRadius = '50%';  // Make the image circular
+
+            // Create a paragraph element for the followers count
+            const followers = document.createElement('p');
+            followers.innerText = `Followers: ${followersCount}`;  // Display the followers count
+            followers.style.color = '#fff';  // Set the color of the text
+
+            // Append the image and followers count to the card
+            card.appendChild(img);
+            card.appendChild(followers);
+
+             // Append the card to the body or any specific container
+             document.body.appendChild(card);
+    }
+    // Attach event listener to the button to trigger API call
+    document.getElementById('fetchDataButton').addEventListener('click', function() {
+            xhr.send();  // Trigger the API request when the button is clicked
+        });
+
+            
+    
+    // console.log("here");
+    // xhr.send(); // call 
+    </script>
+</html>
+
+<!-- You want to create a card that will display the profile photo and followers count fetched from the GitHub API response when a button is clicked. -->
+
+<!-- Notes  -->
+
+<!-- Value	State	Description
+0	UNSENT	Client has been created. open() not called yet.
+1	OPENED	open() has been called.
+2	HEADERS_RECEIVED	send() has been called, and headers and status are available.
+3	LOADING	Downloading; responseText holds partial data.
+4	DONE	The operation is complete. -->

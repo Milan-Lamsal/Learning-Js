@@ -1,7 +1,7 @@
 # Projects related to DOM
 
 ## Project link
-[click here](https://stackblitz.com/edit/stackblitz-starters-nf3qtkes?file=package.json)
+[click here](https://stackblitz.com/edit/stackblitz-starters-akeynxuk?file=package.json)
 
 # Solution code
 

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async Part 2</title>
+</head>
+<body  style="background-color: #212121; color:#fff;">
+    <h1>Async Js Part 2 </h1>
+    <button id="start">Start</button>
+    <button id="stop"> Stop</button>
+
+    <script>
+ //++++++++++++++++++++++++++++++setInterval( prints continoulsy )  +++++++++++++++++++++++++++++++++++++++
+//  setInterval(function() {
+//     console.log("Debal",Date.now());
+//  },2000);
+let intervalId;// store interval ID globally to stop in later
+
+ const sayDate =function(str) {
+     console.log(str,Date.now());
+ }
+// const intervalId= setInterval(sayDate,2000, "Hello"); 
+
+// +++++++++++++++++++++++++++++++ Clear Interval ++++++++++++++++++++
+// to clear we need reference so , const intervalId was given to setInterval
+
+// clearInterval(intervalId);
+document.querySelector('#start').addEventListener('click', function(){
+    if(!intervalId){ // Prevent multiple intervals
+    intervalId=(setInterval(sayDate,2000, "Using button to start"));
+    }
+});
+
+document.querySelector('#stop').addEventListener('click', function(){
+
+clearInterval(intervalId);
+ intervalId= null;
+
+});
+
+
+
+    </script>
+</body>
+</html>

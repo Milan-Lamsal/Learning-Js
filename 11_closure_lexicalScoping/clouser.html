@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body style="background-color: #414141;">
+
+    <button id="Blue">Blue</button>
+    <button id="Red">Red</button>
+
+    <script>
+        function makeFunc() {
+            const name = "Mozilla";
+            function displayName() {
+                console.log(name);
+            }
+            return displayName;
+        }
+        const myFunc = makeFunc();
+        myFunc();
+    </script>
+    <script>
+        //  DRY=> Don't Repeat Yourself
+
+        // document.getElementById("Blue").onclick = function (){
+        //     document.body.style.background="blue"
+        // }
+        // document.getElementById("Red").onclick = function (){
+        //     document.body.style.background="red"
+        // }
+
+        function clickHandler(color){
+            // document.body.style.background=`${color}`
+
+           return  function(){ // redefining the defination 
+            document.body.style.background=`${color}`
+            }
+        }
+        document.getElementById("Red").onclick = clickHandler("Red") // clickHandler is reference not the whole function , for execution you need paratheses () -> clickHandler()
+
+        document.getElementById("Blue").onclick = clickHandler("Blue") // it changes the color byitself without pressing the button so now we need to change for that we chainging the defination 
+    </script>
+
+</body>
+
+</html>

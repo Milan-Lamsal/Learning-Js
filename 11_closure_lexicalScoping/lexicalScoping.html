@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clouser 
+    </title>
+</head>
+<body style="background-color: #323231; color: #fff;">
+
+    <!-- ====================================== Lexical Scoping        ====================================-->
+
+    
+    <script>
+    //      function init() {
+    //     let name = "Mozilla"; // name is a local variable created by init
+    //     function displayName() {
+    //       // displayName() is the inner function, that forms a closure
+    //       console.log(name); // use variable declared in the parent function
+    //     }
+    //     displayName();
+    //   }
+    //   init();
+
+    //++++++++++++++++++++++++++++++++ Function under function +++++++++++++++++++++++++++++++++++
+    function outer(){
+        let username ="Debal"
+        console.log(secret) // parents don't have access to child 
+        function inner(){
+            let secret = "DonNumber1"
+            console.log("inner function",username)
+        }
+        function innertTwo(){
+            console.log("InnerTwo", username)
+            console.log("SECRET IS ",secret)
+        }
+        inner()
+        innertTwo()
+    }
+    outer()
+    console.log("Too Outer",usernmae);
+    </script>
+<!-- Notes  child can inherit the property of parents but they can't do with the siblings ## only child to parents relation-->
+      
+</body>
+</html>

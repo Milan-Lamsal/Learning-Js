@@ -51,7 +51,25 @@ console.log(arrThree[2]);// -> 3
 //Holes_SMI> HOLES_DOUBLE> HOLES_Packed
 
 
+const arrFour = new Array(3)
+//just 3 holes -> Holey_SMI_ELEMENTS
+arrFour[0] = '1' //HOLEY_ELEMENTS downgrades -> forever holey 
+arrFour[0] = '2' // HOLEY_ELEMENTS 
+arrFour[0] = '3'
 
+// We could have done it better this way
+
+const arrFive = []
+arrFive.push('1')// PACKED_ELEMENTS 
+arrFive.push('2')// PACKED_ELEMENTS 
+arrFive.push('3')// PACKED_ELEMENTS 
+
+const arrSix = []
+arrSix.push(NaN)// PACKED_DOUBLE
+arrSix.push(Infinity)// PACKED_DOUBLE
+
+//MODERN OPTIMIAZTION SUGGESTION OR RECOMMENDATION
+// ->for loop, for-of, forEach -> more prefer 
 
 
 
